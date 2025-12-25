@@ -45,11 +45,18 @@ Shell docker run -d -p 80:80 devops-demo:1.0Show more lines
 Shell kubectl apply -f k8s/deployment.yamlkubectl apply -f k8s/service.yaml# Optional: ingress.yaml and hpa.yamlShow more lines
 
 **📸 Preview**
+
 ![Demo.png](https://github.com/iam-siva-prasad/DevOps-Web/blob/main/Images/demo.png)
 
 **🔥 Why This Matters?**
+
 Hands-on projects like this help you bridge the gap between theory and production. Whether you’re preparing for DevOps interviews or building your cloud-native skills, this is a great starting point.
 
-👉 Follow for More
+
+**👉 Follow for More**
+
 Follow me for DevOps tips & projects!
+
 💬 Drop your thoughts or questions in the comments.
+
+Linkedin: "https://www.linkedin.com/in/iam-siva-prasad/"
