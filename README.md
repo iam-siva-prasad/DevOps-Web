@@ -27,13 +27,21 @@ Orchestration: Kubernetes
 
 
 **💡 How to Start?**
+
 1️⃣ Clone the repo
+
 Shell git clone **https://github.com/iam-siva-prasad/DevOps-Web.git** cd DevOps-Web Show more lines
+
 2️⃣ Build Docker Image
+
 Shell docker build -t devops-demo:1.0 .Show more lines
+
 3️⃣ Run the Container
+
 Shell docker run -d -p 80:80 devops-demo:1.0Show more lines
+
 4️⃣ Deploy to Kubernetes (Optional)
+
 Shell kubectl apply -f k8s/deployment.yamlkubectl apply -f k8s/service.yaml# Optional: ingress.yaml and hpa.yamlShow more lines
 
 **📸 Preview**
