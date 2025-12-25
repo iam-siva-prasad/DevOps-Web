@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DevOps Demo Site – Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+</head>
+<body class="theme-light">
+  <header class="nav">
+    <div class="nav__brand">DevOps Demo</div>
+    <nav class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <button id="themeToggle" class="btn btn--ghost">🌙 Dark Mode</button>
+  </header>
+
+  <main class="content">
+    <h1 class="animate-gradient">Contact</h1>
+    <p>Demo form with client-side validation (no backend).</p>
+
+    <form id="contactForm" class="form card" novalidate>
+      <label>
+        Name
+        <input type="text" id="name" placeholder="Your name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </label>
+      <label>
+        Message
+        <textarea id="message" rows="5" placeholder="Type your message..." required></textarea>
+      </label>
+      <button type="submit" class="btn btn--primary">Send</button>
+      <div id="formStatus" class="form__status" aria-live="polite"></div>
+    </form>
+
+    <div class="cta">
+      <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 DevOps Demo</small>
+  </footer>
+</body>
+</html>
