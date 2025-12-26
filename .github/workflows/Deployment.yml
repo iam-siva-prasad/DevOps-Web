@@ -53,7 +53,7 @@ jobs:
           docker run -d -p 80:80 --name web $IMAGE_NAME:latest
           for i in {1..10}; do
             sleep 1
-            if curl -fsS http://localhost:8080/ >/dev/null; then
+            if curl -fsS http://localhost:80/ >/dev/null; then
               echo "Health check OK"
               exit 0
             fi
