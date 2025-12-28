@@ -1,5 +1,4 @@
-
-name: Devops
+name: Devops Website
 
 on:
   push:
