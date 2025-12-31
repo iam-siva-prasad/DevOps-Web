@@ -10,7 +10,7 @@ on:
     - cron: "30 5 * * *"
 
 env:
-  IMAGE_NAME: golisivaprasad/devops
+  IMAGE_NAME: golisampleprasad/devops
 
 jobs:
   Build:
@@ -24,8 +24,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:siva .
-          docker save $IMAGE_NAME:siva > image.tar
+          docker build -t $IMAGE_NAME:sample .
+          docker save $IMAGE_NAME:sample > image.tar
       - name: Upload image artifact
         uses: actions/upload-artifact@v4
         with:
@@ -48,7 +48,7 @@ jobs:
 
       - name: Run container and health-check
         run: |
-          docker run -d -p 80:80 --name web $IMAGE_NAME:siva
+          docker run -d -p 80:80 --name web $IMAGE_NAME:sample
           for i in {1..10}; do
             sleep 1
             if curl -fsS http://localhost:80/ >/dev/null; then
@@ -77,6 +77,6 @@ jobs:
       - name: Load Docker image
         run: docker load < image.tar
 
-      - name: Push only the siva tag
+      - name: Push only the sample tag
         run: |
-          docker push $IMAGE_NAME:siva
+          docker push $IMAGE_NAME:sample
