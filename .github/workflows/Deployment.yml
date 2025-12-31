@@ -24,8 +24,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:latest .
-          docker save $IMAGE_NAME:latest > image.tar
+          docker build -t $IMAGE_NAME:new .
+          docker save $IMAGE_NAME:new > image.tar
 
       - name: Upload image artifact
         uses: actions/upload-artifact@v4
@@ -49,7 +49,7 @@ jobs:
 
       - name: Run container and health-check
         run: |
-          docker run -d -p 80:80 --name web $IMAGE_NAME:latest
+          docker run -d -p 80:80 --name web $IMAGE_NAME:new
           for i in {1..10}; do
             sleep 1
             if curl -fsS http://localhost:80/ >/dev/null; then
@@ -79,6 +79,6 @@ jobs:
       - name: Load Docker image
         run: docker load < image.tar
 
-      - name: Push only the latest tag
+      - name: Push only the new tag
         run: |
-          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:new
