@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Siva's DevOps Website – Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+</head>
+<body class="theme-light">
+  <header class="nav">
+    <div class="nav__brand">Siva's DevOps</div>
+    <nav class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <button id="themeToggle" class="btn btn--ghost">🌙 Dark Mode</button>
+  </header>
+
+  <main class="content">
+    <h1 class="animate-gradient">Contact</h1>
+    <p>Send us a message—your response will be delivered instantly.</p>
+
+    <!-- Google Forms embed -->
+    <div class="card" style="padding:0;">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSemRKY4IPqttzurgtXYlwjvRvvsGxTnpLDeIqXUk4nl9mNipA/viewform?embedded=true"
+        width="100%"
+        height="750"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >Loading…</iframe>
+    </div>
+
+    <div class="cta" style="margin-top:1rem;">
+      <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 Siva's DevOps All Rights Reserved</small>
+  </footer>
+</body>
+</html>
