@@ -79,6 +79,6 @@ jobs:
       - name: Load Docker image
         run: docker load < image.tar
 
-      - name: Push only the test tag
+      - name: Push only the new tag
         run: |
           docker push $IMAGE_NAME:new
