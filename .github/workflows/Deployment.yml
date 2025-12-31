@@ -10,7 +10,7 @@ on:
     - cron: "30 5 * * *"
 
 env:
-  IMAGE_NAME: golihariprasad/devops
+  IMAGE_NAME: golisivaprasad/devops
 
 jobs:
   Build:
@@ -77,6 +77,6 @@ jobs:
       - name: Load Docker image
         run: docker load < image.tar
 
-      - name: Push only the hari tag
+      - name: Push only the siva tag
         run: |
           docker push $IMAGE_NAME:hari
