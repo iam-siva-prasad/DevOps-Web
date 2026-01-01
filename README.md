@@ -27,15 +27,15 @@ Orchestration: Kubernetes
 
 1️⃣ Clone the repo
 
-Shell git clone **https://github.com/iam-siva-prasad/DevOps-Web.git** cd DevOps-Web Show more lines
+$ git clone **https://github.com/iam-siva-prasad/DevOps-Web.git** cd DevOps-Web Show more lines
 
 2️⃣ Build Docker Image
 
-Shell docker build -t devops-demo:live . Show more lines
+$ docker build -t devops-demo:live . Show more lines
 
 3️⃣ Run the Container
 
-Shell docker run -d -p 8080:80 devops-demo:live . Show more lines
+$ docker run -d -p 8080:80 devops-demo:live . Show more lines
 
 **WebSite URL:https://iam-siva-prasad.github.io/DevOps-Web/**
 
