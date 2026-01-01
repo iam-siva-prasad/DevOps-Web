@@ -5,244 +5,126 @@
   <meta charset="utf-8" />
   <title>Siva's DevOps Site – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Preconnect to API (used by temp widget) -->
   <link rel="preconnect" href="https://api.open-meteo.com" />
-
-  <!-- External styles & app JS -->
   <link rel="stylesheet" href="assets/styles.css" />
   <script src="assets/app.js" defer></script>
 
-  <!-- Minimal critical styles (optional—move to assets/styles.css in prod) -->
+  <!-- Minimal fix to keep hero actions horizontal (safe to remove if already in assets/styles.css) -->
   <style>
-    :root {
-      --brand: #0a66c2;
-      --text: #333;
-      --muted: #555;
-      --bg: #f9f9f9;
-      --border: #ddd;
-    }
-    body.theme-light {
-      background: #fff;
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-    }
-    .nav {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      align-items: center;
-      gap: 1rem;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .nav__brand {
-      font-weight: 700;
-      color: var(--brand);
-      white-space: nowrap;
-    }
-    .nav__links a {
-      margin-right: 12px;
-      text-decoration: none;
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 6px;
-    }
-    .nav__links a.active,
-    .nav__links a:hover {
-      background: #eef5ff;
-      color: var(--brand);
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.12s ease, background 0.2s ease, color 0.2s ease;
-      cursor: pointer;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn--primary {
-      background: var(--brand);
-      color: #fff;
-    }
-    .btn--primary:hover { background: #084f96; }
-    .btn--secondary {
-      background: #eef5ff;
-      color: var(--brand);
-    }
-    .btn--ghost {
-      background: transparent;
-      color: var(--brand);
-      border: 1px solid var(--brand);
-    }
-    .hero {
-      padding: 40px 16px 24px;
-      text-align: center;
-      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    .hero h1 {
-      margin: 12px auto 6px;
-      max-width: 920px;
-      font-size: clamp(24px, 6vw, 40px);
-      line-height: 1.2;
-    }
-    .animate-gradient {
-      background: linear-gradient(90deg, #0a66c2, #7f00ff, #00c2ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: hue 6s linear infinite;
-    }
-    @keyframes hue {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-    .hero__actions {
-      margin-top: 16px;
-      display: inline-flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    main {
-      padding: 24px 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      background: #fff;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(6px);
-      animation: fadeIn 0.4s ease forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .spinner {
-      width: 22px; height: 22px;
-      border: 3px solid #eee;
-      border-top-color: var(--brand);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 8px auto;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .stack { display: grid; gap: 8px; }
-    .wiggle { animation: wiggle 1.5s ease-in-out infinite; }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(1deg); }
-    }
-    .footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 14px;
-      color: var(--muted);
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    .footer strong { color: var(--brand); }
-    .footer small { display: block; margin-top: 6px; color: #777; }
+    .hero__actions { display: inline-flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   </style>
 </head>
-
 <body class="theme-light">
-  <!-- Top Navigation -->
-  <header class="nav" role="banner">
-    <div class="nav__brand">Containerize Website</div>
-    <nav class="nav__links" aria-label="Primary">
+  <header class="nav">
+    <div class="nav__brand">containerize website </div>
+    <nav class="nav__links">
       <a href="index.html" class="active">Home</a>
       <a href="features.html">Features</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button id="themeToggle" class="btn btn--ghost" aria-pressed="false">🌙 Dark Mode</button>
+    <button id="themeToggle" class="btn btn--ghost">🌙 Dark Mode</button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1 class="animate-gradient">Containerize Website for Docker &amp; Kubernetes</h1>
+  <!-- HERO SECTION (wrapped correctly) -->
+  <section>
+    <h1 class="animate-gradient">containerize website for  Docker &amp; Kubernetes</h1>
+
+    <div class="hero__actions">
+      <a href="index.html" class="btn btn--primary">Explore Features →</a>
+    </div>
+
+    <!-- First footer block (kept as-is) -->
+    <footer class="footer">
+      <p>
+        <strong>containerize website for  Docker &amp; Kubernetes</strong> | Perfect for Practice.
+      </p>
+    </footer>
+
+    <style>
+      .footer {
+        text-align: center;
+        padding: 37px;
+        font-size: 36px;
+        color: #555;
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+      }
+      .footer strong {
+        color: #0a66c2;
+      }
+    </style>
+
+    <!-- Second footer block (kept as-is) -->
+    <footer class="footer">
+      <p>
+        Developed by <strong>Siva Prasad Goli</strong> | Built with 
+        <span>HTML, CSS &amp; JavaScript</span> | Perfect for Docker Practice
+      </p>
+    </footer>
+
+    <style>
+      .footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+        color: #555;
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+      }
+      .footer strong {
+        color: #0a66c2;
+      }
+    </style>
+
+    <!-- Second hero actions (kept as-is, now valid) -->
     <div class="hero__actions">
       <a href="features.html" class="btn btn--primary">Explore Features →</a>
-
-      <!-- GitHub Repo - safe new tab -->
+      <!-- UPDATED: Open your GitHub repo in a new tab safely -->
       <a href="https://github.com/iam-siva-prasad/DevOps-Web"
          class="btn btn--ghost"
          target="_blank"
-         rel="noopener noreferrer"
-         aria-label="Open GitHub repository in a new tab">
-        View Repo
-      </a>
-
-      <!-- Email compose (will open user's email client) -->
-      <a href="mailto:golisiva50@gmail.com?subject=Support%20Request&body=Hello%0A%0A"
-         class="btn btn--secondary"
-         aria-label="Compose email to Siva">
-        Email Us
-      </a>
+         rel="noopener noreferrer">View Repo</a>
     </div>
   </section>
 
-  <!-- Main Content -->
-  <main>
-    <section class="grid" aria-label="Feature Grid">
-      <article class="card fade-in">
-        <h3>Live Temperature Widget</h3>
-        <p>Gets your location (or defaults to Nellore) and shows current temperature.</p>
-        <div id="tempWidget" class="temp" aria-live="polite">
-          <div class="temp__controls">
-            <button id="refreshTemp" class="btn btn--ghost">↻ Refresh</button>
-            <button id="toggleUnit" class="btn btn--ghost">°C / °F</button>
-          </div>
-          <div class="temp__reading">
-            <span id="tempValue" class="temp__value">--</span>
-            <span id="tempUnit" class="temp__unit">°C</span>
-          </div>
-          <div id="tempStatus" class="temp__status">Initializing…</div>
-          <div id="tempSpinner" class="spinner" hidden></div>
+  <!-- GRID SECTION (unchanged content) -->
+  <section class="grid">
+    <article class="card fade-in">
+      <h3>Live Temperature Widget</h3>
+      <p>Gets your location (or uses Nellore) and shows current temperature.</p>
+      <div id="tempWidget" class="temp">
+        <div class="temp__controls">
+          <button id="refreshTemp" class="btn btn--ghost">↻ Refresh</button>
+          <button id="toggleUnit" class="btn btn--ghost">°C / °F</button>
         </div>
-      </article>
-
-      <article class="card fade-in">
-        <h3>Animated UI</h3>
-        <p>CSS transitions, gradient text animation, and button hover effects.</p>
-        <button class="btn btn--primary wiggle">Try Me</button>
-      </article>
-
-      <article class="card fade-in">
-        <h3>Redirects &amp; Navigation</h3>
-        <p>Multi-page navigation and buttons to internal &amp; external links.</p>
-        <div class="stack">
-          <a href="features.html" class="btn btn--secondary">Go to Features</a>
-          <a href="contact.html" class="btn btn--ghost">Contact Us</a>
+        <div class="temp__reading">
+          <span id="tempValue" class="temp__value">--</span>
+          <span id="tempUnit" class="temp__unit">°C</span>
         </div>
-      </article>
-    </section>
-  </main>
+        <div id="tempStatus" class="temp__status">Initializing…</div>
+        <div id="tempSpinner" class="spinner" hidden></div>
+      </div>
+    </article>
 
-  <!-- Unified Footer -->
-  <footer class="footer" role="contentinfo">
-    <p>
-      Developed by <strong>Siva Prasad Goli</strong> | Built with
-      <span>HTML, CSS &amp; JavaScript</span> | Perfect for Docker Practice
-    </p>
-    <small>© 2025 Siva's DevOps — All Rights Reserved</small>
+    <article class="card fade-in">
+      <h3>Animated UI</h3>
+      <p>CSS transitions, gradient text animation, button hover effects.</p>
+      <button class="btn btn--primary wiggle">Try Me</button>
+    </article>
+
+    <article class="card fade-in">
+      <h3>Redirects &amp; Nav</h3>
+      <p>Multi-page navigation and buttons to internal &amp; external links.</p>
+      <div class="stack">
+        <a href="features.html" class="btn btn--secondary">Go to Features</a>
+        <a href="contact.html" class="btn btn--ghost">Contact Us</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- Final footer (kept as-is) -->
+  <footer class="footer">
+    <small>© 2025 Siva's DevOps All Rights Reserved </small>
   </footer>
 </body>
 </html>
