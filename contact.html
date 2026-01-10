@@ -21,38 +21,42 @@
 
 
 
+
     
-    <style>
-    /* Style ONLY the toggle button by ID to avoid any global .btn conflicts */
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theme Toggle</title>
+  <style>
+    /* Style ONLY the toggle button by ID (no global impact) */
     #themeToggle {
+      position: fixed;      /* pin to viewport */
+      top: 12px;            /* distance from top */
+      left: 12px;           /* distance from left */
+      z-index: 9999;        /* stay on top of other elements */
+      
       background: transparent;
       padding: 8px 14px;
       border-radius: 6px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      align-items: left;
       border: 1px solid currentColor; /* border follows text color */
     }
 
-    /* Scoped color rules based on page theme */
-    /* When page is LIGHT => button text should be BLACK */
+    /* Button color depends on theme (still scoped to the button only) */
     html[data-theme="light"] #themeToggle {
-      color: #000000;
+      color: #000000; /* black text in light mode */
     }
-
-    /* When page is DARK => button text should be WHITE */
     html[data-theme="dark"] #themeToggle {
-      color: #ffffff;
+      color: #ffffff; /* white text in dark mode */
     }
 
-    /* Optional hover states (still scoped to the button only) */
-    html[data-theme="light"] #themeToggle:hover {
-      color: #222222;
-    }
-    html[data-theme="dark"] #themeToggle:hover {
-      color: #dddddd;
-    }
+    /* Optional hover */
+    html[data-theme="light"] #themeToggle:hover { color: #222222; }
+    html[data-theme="dark"]  #themeToggle:hover { color: #dddddd; }
   </style>
 </head>
 <body>
@@ -60,24 +64,22 @@
     <nav>
       <!-- your nav items -->
     </nav>
-
-    <!-- Toggle button (only this button’s styles are affected) -->
-    <button id="themeToggle">🌙 Dark Mode</button>
   </header>
 
+  <!-- Toggle button (only this element is affected by the styles above) -->
+  <button id="themeToggle" aria-label="Switch to dark mode">🌙 Dark Mode</button>
+
   <main>
-    <!-- Your page content goes here; it won't be affected by the button styles -->
-    <p> </p>
+    <p>Your page content remains unaffected.</p>
   </main>
 
   <script>
-    // Initialize based on what's on <html data-theme="...">
+    // Initialize based on <html data-theme="...">
     const htmlEl = document.documentElement;
     const toggleBtn = document.getElementById('themeToggle');
 
     function applyLabel() {
-      const theme = htmlEl.getAttribute('data-theme');
-      // Show the NEXT action: if currently light, offer Dark Mode; if dark, offer Light Mode
+      const theme = htmlEl.getAttribute('data-theme') || 'light';
       if (theme === 'light') {
         toggleBtn.textContent = '🌙 Dark Mode';
         toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
@@ -94,14 +96,12 @@
       applyLabel();
     }
 
-    // Set the correct initial label
     applyLabel();
-
-    // Wire up the click
     toggleBtn.addEventListener('click', toggleTheme);
   </script>
 </body>
 </html>
+
 
     
     
