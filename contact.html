@@ -23,6 +23,11 @@
 <h1 class="hero__title" style="color: deepskyblue; margin-bottom: 18px;">Our Official Profiles</h1>
     
 
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,71 +35,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Buttons</title>
   <style>
-    /* Base button styles */
-    .btn {
+    /* Scope EVERYTHING to this section so it doesn't affect the rest of the page */
+    #action-buttons .btn {
       display: inline-block;
       padding: 12px 24px;
       border-radius: 6px;
       font-size: 18px;
       font-weight: bold;
-      text-decoration: none;
+      text-decoration: none;   /* keep as link but styled like button */
       text-align: center;
       cursor: pointer;
       border: none;
       margin-right: 20px;
       margin-bottom: 25px;
-      /* Ensure link text stays white in all states */
-      color: #fff;
-    }
-    .btn:link,
-    .btn:visited,
-    .btn:hover,
-    .btn:active {
-      color: #fff;
+      color: #ffffff;          /* text color for these buttons only */
     }
 
-    /* GitHub button (dark green) */
-    .btn--github {
-      background-color: #001a00;
-    }
-    .btn--github:hover {
-      background-color: #004d00;
-    }
-
-    /* LinkedIn button (deep blue) */
-    .btn--linkedin {
-      background-color: #002080;
-    }
-    .btn--linkedin:hover {
-      background-color: #4d79ff;
-    }
-
-    /* Email button (light blue) */
-    .btn--email {
-      background-color: #66ccff;
-    }
-    .btn--email:hover {
-      background-color: #33bbff;
-    }
-
-    /* Optional: container to center buttons */
-    .btn-row {
+    #action-buttons .btn-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
     }
+
+    /* GitHub button (dark green) */
+    #action-buttons .btn--github {
+      background-color: #001a00;
+    }
+    #action-buttons .btn--github:hover {
+      background-color: #004d00;
+    }
+
+    /* LinkedIn button (deep blue) */
+    #action-buttons .btn--linkedin {
+      background-color: #002080;
+    }
+    #action-buttons .btn--linkedin:hover {
+      background-color: #4d79ff;
+    }
+
+    /* Email button (light blue) */
+    #action-buttons .btn--email {
+      background-color: #66ccff;
+    }
+    #action-buttons .btn--email:hover {
+      background-color: #33bbff;
+    }
   </style>
 </head>
 <body>
-  <div class="btn-row">
-    <a href="https://github.com/iam-siva-prasad/" target="_blank" class="btn btn--github">GitHub</a>
-    <a href="https://www.linkedin.com/in/iam-siva-prasad/" target="_blank" class="btn btn--linkedin">LinkedIn</a>
-    <a href="mailto:golisiva50@gmail.com?subject=Support%20Request&body=Dear%20Sir%0A%0A" class="btn btn--email">Email Us</a>
-  </div>
+  <!-- Put this block wherever you need the three buttons -->
+  <section id="action-buttons">
+    <div class="btn-row">
+      <a href="https://github.com/iam-siva-prasad/" target="_blank" class="btn btn--github">GitHub</a>
+      <a href="https://www.linkedin.com/in/iam-siva-prasad/" target="_blank" class="btn btn--linkedin">LinkedIn</a>
+      <a href="mailto:golisiva50@gmail.com?subject=Support%20Request&body=Dear%20Sir%0A%0A" class="btn btn--email">Email Us</a>
+    </div>
+  </section>
+
+  <!-- Your other page content goes here. It will not be affected. -->
 </body>
 </html>
 
+
+
+
+
+
+
+
+
+
+
+    
 
     
     <h1 class="hero__title" style="color: deepskyblue;"> Contact </h1>
