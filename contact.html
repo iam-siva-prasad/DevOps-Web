@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <!-- Keep your site JS; we also add a small inline handler for the form -->
   <script src="assets/app.js" defer></script>
-
 </head>
 <body class="theme-light">
   <header class="nav">
@@ -17,86 +16,7 @@
       <a href="features.html">Features</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
-<!-- 
-  <style>
-    /* Style ONLY the toggle button by ID (no global impact) */
-    #themeToggle {
-      position: fixed;      /* pin to viewport */
-      top: 12px;            /* distance from top */
-      right: 12px;           /* distance from right */
-      z-index: 9999;        /* stay on top of other elements */
-      
-      background: transparent;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid currentColor; /* border follows text color */
-    }
-
-    /* Button color depends on theme (still scoped to the button only) */
-    html[data-theme="light"] #themeToggle {
-      color: #000000; /* black text in light mode */
-    }
-    html[data-theme="dark"] #themeToggle {
-      color: #ffffff; /* white text in dark mode */
-    }
-
-    /* Optional hover */
-    html[data-theme="light"] #themeToggle:hover { color: #222222; }
-    html[data-theme="dark"]  #themeToggle:hover { color: #dddddd; }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <!-- your nav items -->
-    </nav>
-  </header>
-
-  <!-- Toggle button (only this element is affected by the styles above) -->
-  <button id="themeToggle" aria-label="Switch to dark mode">🌙 Dark Mode</button>
-
-  <main>
-    <p> </p>
-  </main>
-
-  <script>
-    // Initialize based on <html data-theme="...">
-    const htmlEl = document.documentElement;
-    const toggleBtn = document.getElementById('themeToggle');
-
-    function applyLabel() {
-      const theme = htmlEl.getAttribute('data-theme') || 'light';
-      if (theme === 'light') {
-        toggleBtn.textContent = '🌙 Dark Mode';
-        toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
-      } else {
-        toggleBtn.textContent = '☀️ Light Mode';
-        toggleBtn.setAttribute('aria-label', 'Switch to light mode');
-      }
-    }
-
-    function toggleTheme() {
-      const current = htmlEl.getAttribute('data-theme') || 'light';
-      const next = current === 'light' ? 'dark' : 'light';
-      htmlEl.setAttribute('data-theme', next);
-      applyLabel();
-    }
-
-    applyLabel();
-    toggleBtn.addEventListener('click', toggleTheme);
-  </script>
-</body>
-</html> -->
-
-
-    
-    
-    
-    
-  <button id="themeToggle" class="btn btn--ghost">🌙 Dark Mode</button>
+    <button id="themeToggle" class="btn btn--ghost">🌙 Dark Mode</button>
   </header>
 
   <main class="content"> 
