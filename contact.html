@@ -7,7 +7,110 @@
   <link rel="stylesheet" href="assets/styles.css" />
   <!-- Keep your site JS; we also add a small inline handler for the form -->
   <script src="assets/app.js" defer></script>
+
+  
+  
+  
+
+
+
+
+
+
+<style>
+    /* Style ONLY the toggle button by ID to avoid any global .btn conflicts */
+    #themeToggle {
+      background: transparent;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid currentColor; /* border follows text color */
+    }
+
+    /* Scoped color rules based on page theme */
+    /* When page is LIGHT => button text should be BLACK */
+    html[data-theme="light"] #themeToggle {
+      color: #000000;
+    }
+
+    /* When page is DARK => button text should be WHITE */
+    html[data-theme="dark"] #themeToggle {
+      color: #ffffff;
+    }
+
+    /* Optional hover states (still scoped to the button only) */
+    html[data-theme="light"] #themeToggle:hover {
+      color: #222222;
+    }
+    html[data-theme="dark"] #themeToggle:hover {
+      color: #dddddd;
+    }
+  </style>
 </head>
+<body>
+  <header>
+    <nav>
+      <!-- your nav items -->
+    </nav>
+
+    <!-- Toggle button (only this button’s styles are affected) -->
+    <button id="themeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <main>
+    <!-- Your page content goes here; it won't be affected by the button styles -->
+    <p>This text will keep its own color, unaffected by the button rules.</p>
+  </main>
+
+  <script>
+    // Initialize based on what's on <html data-theme="...">
+    const htmlEl = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+
+    function applyLabel() {
+      const theme = htmlEl.getAttribute('data-theme');
+      // Show the NEXT action: if currently light, offer Dark Mode; if dark, offer Light Mode
+      if (theme === 'light') {
+        toggleBtn.textContent = '🌙 Dark Mode';
+        toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+      } else {
+        toggleBtn.textContent = '☀️ Light Mode';
+        toggleBtn.setAttribute('aria-label', 'Switch to light mode');
+      }
+    }
+
+    function toggleTheme() {
+      const current = htmlEl.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', next);
+      applyLabel();
+    }
+
+    // Set the correct initial label
+    applyLabel();
+
+    // Wire up the click
+    toggleBtn.addEventListener('click', toggleTheme);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  <!-- </head>
 <body class="theme-light">
   <header class="nav">
     <div class="nav__brand">Siva's DevOps</div>
@@ -20,7 +123,7 @@
   </header>
 
   <main class="content"> 
-<h1 class="hero__title" style="color: deepskyblue; margin-bottom: 18px;">Our Official Profiles</h1>
+<h1 class="hero__title" style="color: deepskyblue; margin-bottom: 18px;">Our Official Profiles</h1> -->
     
 
 
