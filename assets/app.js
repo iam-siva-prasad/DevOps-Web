@@ -1,55 +1,29 @@
 
-/* =========================
-   Theme toggle with persistence
-   ========================= */
+
+/* Theme toggle with persistence */
 (function themeInit() {
-  // Run only after the DOM is ready so #themeToggle exists and can be bound.
-  function init() {
-    const body = document.body;
-    const toggleBtn = document.getElementById('themeToggle');
+  const body = document.body;
+  const toggleBtn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme') || 'light';
+  body.classList.toggle('theme-dark', saved === 'dark');
+  body.classList.toggle('theme-light', saved !== 'dark');
 
-    const saved = localStorage.getItem('theme') || 'light';
-
-    // Apply saved theme classes
-    body.classList.toggle('theme-dark', saved === 'dark');
-    body.classList.toggle('theme-light', saved !== 'dark');
-
-    // Ensure the button shows the correct label immediately
-    if (toggleBtn) {
-      toggleBtn.textContent = saved === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-      // Make sure it's clickable (in case of accidental styles)
-      toggleBtn.removeAttribute('disabled');
-      toggleBtn.style.pointerEvents = 'auto';
-    }
-
-    function setTheme(next) {
-      localStorage.setItem('theme', next);
-      body.classList.toggle('theme-dark', next === 'dark');
-      body.classList.toggle('theme-light', next !== 'dark');
-      if (toggleBtn) {
-        toggleBtn.textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-      }
-    }
-
-    if (toggleBtn) {
-      // Attach the click handler now that the element is present
-      toggleBtn.addEventListener('click', () => {
-        const current = localStorage.getItem('theme') || 'light';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    }
+  function setTheme(next) {
+    localStorage.setItem('theme', next);
+    body.classList.toggle('theme-dark', next === 'dark');
+    body.classList.toggle('theme-light', next !== 'dark');
+    if (toggleBtn) toggleBtn.textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const current = localStorage.getItem('theme') || 'light';
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    setTheme(saved);
   }
 })();
 
-/* =========================
-   Temperature widget (Open-Meteo API)
-   ========================= */
+/* Temperature widget (Open-Meteo API) */
 (function tempWidgetInit() {
   const valueEl = document.getElementById('tempValue');
   const unitEl = document.getElementById('tempUnit');
@@ -115,9 +89,7 @@
   toggleUnitBtn?.addEventListener('click', () => { showF = !showF; display(); });
 })();
 
-/* =========================
-   Contact form (client-side validation demo)
-   ========================= */
+/* Contact form (client-side validation demo) */
 (function contactFormInit() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
