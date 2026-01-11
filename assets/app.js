@@ -1,5 +1,4 @@
 
-
 /* Theme toggle with persistence */
 (function themeInit() {
   const body = document.body;
