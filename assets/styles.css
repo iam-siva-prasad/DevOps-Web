@@ -1,97 +1,99 @@
 
-:root {
-  --bg: #0f172a;          /* dark slate */
-  --bg-light: #f8fafc;    /* light gray */
-  --text: #e2e8f0;        /* slate-200 */
-  --text-dark: #0f172a;   /* slate-900 */
-  --primary: #6366f1;     /* indigo-500 */
-  --secondary: #22c55e;   /* green-500 */
-  --card: #1e293b;        /* slate-800 */
-  --border: #334155;      /* slate-700 */
+/* =========================
+   TYPOGRAPHY & LAYOUT ADD-ON
+   (Safe to paste after your current CSS)
+   ========================= */
+
+/* 1) Base type sizes */
+html { font-size: 16px; }             /* 1rem = 16px */
+body { line-height: 1.6; }            /* comfortable reading rhythm */
+
+/* 2) Navigation */
+.nav__brand { 
+  font-size: 1.25rem;                 /* 20px */
+  line-height: 1.2;
+}
+.nav__links a { 
+  font-size: 1rem;                    /* 16px */
+  line-height: 1.4;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body.theme-dark { background: var(--bg); color: var(--text); }
-body.theme-light { background: var(--bg-light); color: var(--text-dark); }
-
-.nav {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 2rem; border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; backdrop-filter: blur(6px);
+/* 3) Hero */
+.hero__title {                         /* You already have 2.5rem—kept as-is */
+  /* font-size: 2.5rem; */             /* 40px */
+  line-height: 1.2;
 }
-.nav__brand { font-weight: 700; letter-spacing: .5px; }
-.nav__links a {
-  margin: 0 .5rem; text-decoration: none; padding: .5rem .75rem; border-radius: .5rem;
-  color: inherit;
-}
-.nav__links a.active { background: rgba(99,102,241,.15); color: var(--primary); }
-
-.hero { text-align: center; padding: 4rem 2rem; }
-.hero__title { font-size: 2.5rem; margin: 0; }
-.hero__subtitle { margin: .5rem 0 2rem 0; opacity: .8; }
-.hero__actions { display: inline-flex; gap: .75rem; }
-
-.grid {
-  display: grid; gap: 1rem; padding: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+.hero__subtitle { 
+  font-size: 1.125rem;                /* 18px; use 1.25rem (20px) if you prefer larger */
+  line-height: 1.5;
 }
 
-.card {
-  background: rgba(30,41,59,.7); color: var(--text);
-  border: 1px solid var(--border); border-radius: 1rem; padding: 1rem;
+/* 4) Section headings (for content sections like Profiles, Contact) */
+h1 {
+  font-size: 2.5rem;                  /* 40px main page title */
+  line-height: 1.2;
+  margin: 0.5em 0 0.4em;
 }
-body.theme-light .card { background: white; color: var(--text-dark); border-color: #e5e7eb; }
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: .6rem 1rem; border-radius: .6rem; border: 1px solid transparent;
-  cursor: pointer; transition: transform .08s ease, box-shadow .2s ease;
+h2 {
+  font-size: 2rem;                    /* 32px section title */
+  line-height: 1.25;
+  margin: 0.8em 0 0.5em;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(99,102,241,.15); }
-.btn:active { transform: translateY(0); }
-.btn--primary { background: var(--primary); color: white; }
-.btn--secondary { background: var(--secondary); color: #04210f; }
-.btn--ghost { background: transparent; border-color: var(--border); }
-
-.footer { text-align: center; padding: 2rem; opacity: .7; }
-
-.animate-gradient {
-  background: linear-gradient(90deg, #22c55e, #06b6d4, #6366f1);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: hue 6s linear infinite;
-}
-@keyframes hue { 0% { filter: hue-rotate(0deg);} 100% { filter: hue-rotate(360deg);} }
-
-.fade-in { animation: fade .6s ease both; }
-@keyframes fade { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} }
-
-.wiggle { animation: wiggle 1.2s ease infinite; }
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0); }
-  25% { transform: rotate(1deg); }
-  50% { transform: rotate(-1deg); }
-  75% { transform: rotate(0.5deg); }
+h3 {
+  font-size: 1.5rem;                  /* 24px subsection */
+  line-height: 1.3;
+  margin: 0.9em 0 0.5em;
 }
 
-.temp { display: grid; gap: .75rem; align-items: center; }
-.temp__controls { display: inline-flex; gap: .5rem; }
-.temp__reading { font-size: 2.2rem; font-weight: 700; }
-.temp__value { min-width: 3ch; display: inline-block; }
-.temp__status { font-size: .9rem; opacity: .8; }
-
-.spinner {
-  width: 24px; height: 24px; border: 3px solid rgba(99,102,241,.25);
-  border-top-color: var(--primary); border-radius: 50%;
-  animation: spin .8s linear infinite;
+/* 5) Cards & card titles */
+.card { 
+  font-size: 1rem;                    /* 16px body text inside cards */
+  line-height: 1.55;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.content { padding: 2rem; }
-.form { display: grid; gap: .75rem; }
-.form input, .form textarea {
-  width: 100%; padding: .6rem .8rem; border: 1px solid var(--border);
-  border-radius: .5rem; background: transparent; color: inherit;
+.card h3, .card .title {
+  font-size: 1.125rem;                /* 18px card title */
+  line-height: 1.35;
 }
-.form__status { margin-top: .5rem; min-height: 1.2rem; }
-.stack { display: inline-flex; gap: .5rem; }
+
+/* 6) Buttons */
+.btn { 
+  font-size: 1rem;                    /* 16px */
+  line-height: 1.2;
+}
+
+/* 7) Forms & helper text */
+.form input, .form textarea { 
+  font-size: 1rem;                    /* 16px for inputs */
+  line-height: 1.4;
+}
+.form__status { 
+  font-size: 0.875rem;                /* 14px muted/helper text */
+  line-height: 1.4;
+}
+
+/* 8) Footer */
+.footer {
+  font-size: 0.9375rem;               /* 15px (slightly smaller than body) */
+  line-height: 1.6;
+}
+
+/* 9) Social icons row (if using font-icons or controlling SVG size by font-size) */
+.social-icons { 
+  font-size: 1.25rem;                 /* 20px icons; try 1.5rem (24px) if you want larger */
+}
+
+/* 10) Optional: Max readable content width (wrap main content in .container) */
+.container {
+  max-width: 72ch;                    /* ~optimal text line length */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* 11) Optional responsive scaling (uncomment to enable fluid sizes)
+   Keeps sizes readable on small screens and elegant on wide screens */
+/*
+h1 { font-size: clamp(2rem, 4vw + 1rem, 2.5rem); }   // 32px → 40px
+h2 { font-size: clamp(1.75rem, 2.5vw + 0.75rem, 2rem); } // ~28px → 32px
+.hero__subtitle { font-size: clamp(1rem, 1.2vw + 0.75rem, 1.25rem); } // 16px → 20px
+.nav__brand { font-size: clamp(1.125rem, 1vw + 0.75rem, 1.25rem); }   // 18px → 20px
+*/
