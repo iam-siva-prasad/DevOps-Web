@@ -1,120 +1,120 @@
 
-/* Theme toggle with persistence */
-(function themeInit() {
-  const body = document.body;
-  const toggleBtn = document.getElementById('themeToggle');
-  const saved = localStorage.getItem('theme') || 'light';
-  body.classList.toggle('theme-dark', saved === 'dark');
-  body.classList.toggle('theme-light', saved !== 'dark');
+/* =========================
+   THEME TOGGLE (OPPOSITE COLOR)
+   ========================= */
 
-  function setTheme(next) {
-    localStorage.setItem('theme', next);
-    body.classList.toggle('theme-dark', next === 'dark');
-    body.classList.toggle('theme-light', next !== 'dark');
-    if (toggleBtn) toggleBtn.textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-  }
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const current = localStorage.getItem('theme') || 'light';
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-    setTheme(saved);
-  }
-})();
+/* Base styling for the toggle button */
+#themeToggle {
+  /* Layout & spacing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: .55rem .95rem;
 
-/* Temperature widget (Open-Meteo API) */
-(function tempWidgetInit() {
-  const valueEl = document.getElementById('tempValue');
-  const unitEl = document.getElementById('tempUnit');
-  const statusEl = document.getElementById('tempStatus');
-  const spinnerEl = document.getElementById('tempSpinner');
-  const refreshBtn = document.getElementById('refreshTemp');
-  const toggleUnitBtn = document.getElementById('toggleUnit');
+  /* Shape & border */
+  border: 1px solid var(--border);
+  border-radius: .6rem;
 
-  if (!valueEl || !unitEl || !statusEl) return; // only on pages that have the widget
+  /* Typography */
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: .2px;
 
-  let tempC = null;      // store Celsius
-  let showF = false;     // unit toggle
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color .20s ease,
+    color .20s ease,
+    border-color .20s ease,
+    box-shadow .25s ease,
+    transform .08s ease;
+}
 
-  const DEFAULT_COORDS = { lat: 14.4426, lon: 79.9865 }; // Nellore fallback
+/* Focus-visible for accessibility */
+#themeToggle:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.35); /* indigo glow */
+}
 
-  function toF(c) { return (c * 9/5) + 32; }
-  function display() {
-    if (tempC == null) return;
-    const shown = showF ? toF(tempC) : tempC;
-    valueEl.textContent = Math.round(shown * 10) / 10;
-    unitEl.textContent = showF ? '°F' : '°C';
-  }
+/* Active press feedback */
+#themeToggle:active {
+  transform: translateY(0); /* keep consistent with your .btn */
+}
 
-  async function fetchTemp(lat, lon) {
-    spinnerEl?.removeAttribute('hidden');
-    statusEl.textContent = 'Fetching temperature…';
-    try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&timezone=auto`;
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (data?.current?.temperature_2m == null) throw new Error('No temperature in response');
-      tempC = data.current.temperature_2m;
-      statusEl.textContent = `Updated: ${new Date(data.current.time).toLocaleString()}`;
-      display();
-    } catch (err) {
-      statusEl.textContent = 'Failed to fetch live data. Showing fallback.';
-      // Simple fallback: random-ish Celsius around 30°C
-      tempC = 28 + Math.random() * 6;
-      display();
-    } finally {
-      spinnerEl?.setAttribute('hidden', '');
-    }
-  }
+/* ---------------------------------
+   LIGHT MODE PAGE → DARK BUTTON
+   --------------------------------- */
+body.theme-light #themeToggle {
+  background-color: var(--bg);        /* dark slate background */
+  color: var(--text);                 /* light text on dark */
+  border-color: var(--border);        /* slate-700 */
+  box-shadow: 0 8px 18px rgba(15, 23, 42, .20); /* subtle dark shadow */
+}
 
-  function getLocationAndFetch() {
-    if (!navigator.geolocation) {
-      fetchTemp(DEFAULT_COORDS.lat, DEFAULT_COORDS.lon);
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      pos => fetchTemp(pos.coords.latitude, pos.coords.longitude),
-      _err => fetchTemp(DEFAULT_COORDS.lat, DEFAULT_COORDS.lon),
-      { enableHighAccuracy: true, timeout: 5000 }
-    );
-  }
+/* Hover in light mode */
+body.theme-light #themeToggle:hover {
+  background-color: #0b1224;          /* slightly darker than var(--bg) */
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .28);
+}
 
-  // Initialize
-  getLocationAndFetch();
+/* Disabled state (if needed later) */
+body.theme-light #themeToggle:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 
-  // Events
-  refreshBtn?.addEventListener('click', getLocationAndFetch);
-  toggleUnitBtn?.addEventListener('click', () => { showF = !showF; display(); });
-})();
+/* ---------------------------------
+   DARK MODE PAGE → LIGHT BUTTON
+   --------------------------------- */
+body.theme-dark #themeToggle {
+  background-color: var(--bg-light);  /* light background */
+  color: var(--text-dark);            /* dark text */
+  border-color: #e5e7eb;              /* light border for contrast */
+  box-shadow: 0 8px 18px rgba(226, 232, 240, .35); /* light shadow */
+}
 
-/* Contact form (client-side validation demo) */
-(function contactFormInit() {
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  if (!form || !status) return;
+/* Hover in dark mode */
+body.theme-dark #themeToggle:hover {
+  background-color: #ffffff;          /* pure white on hover for clarity */
+  box-shadow: 0 10px 24px rgba(226, 232, 240, .45);
+}
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+/* Disabled state (if needed later) */
+body.theme-dark #themeToggle:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 
-    if (!name || !email || !message) {
-      status.textContent = 'Please fill out all fields.';
-      status.style.color = 'tomato';
-      return;
-    }
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
-      status.textContent = 'Please enter a valid email address.';
-      status.style.color = 'tomato';
-      return;
-    }
+/* ---------------------------------
+   ENSURE THESE RULES WIN OVER .btn
+   --------------------------------- */
+/* If #themeToggle also uses .btn or .btn--ghost, inherit
+   the theme-specific colors defined above. */
+#themeToggle.btn,
+#themeToggle.btn--ghost,
+#themeToggle.btn--primary,
+#themeToggle.btn--secondary {
+  background: inherit;
+  color: inherit;
+  border-color: inherit;
+  box-shadow: inherit;
+}
 
-    // Simulate send
-    status.textContent = '✅ Message sent (demo). No backend configured.';
-    status.style.color = 'green';
-    form.reset();
-  });
-})();
+/* Optional: compact variant if you use an icon-only toggle sometimes */
+#themeToggle.icon-only {
+  padding: .5rem;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+/* Optional: smooth icon/text alignment for emoji labels */
+#themeToggle > .label,
+#themeToggle > .icon {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
