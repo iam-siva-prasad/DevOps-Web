@@ -1,3 +1,4 @@
+
 **🚀 Build & Deploy a Full-Stack Static Website for DevOps Practice**
 
 Want to master Docker & Kubernetes with a real-world example? This project is a ready-to-run static website designed for practicing containerization and orchestration.
@@ -20,7 +21,7 @@ Orchestration: Kubernetes
 
 
 **🌐 Repository**
-"https://github.com/iam-siva-prasad/DevOps-Web"
+**"https://github.com/iam-siva-prasad/DevOps-Web"**
 
 
 **💡 How to Start?**
@@ -54,4 +55,4 @@ Follow me for DevOps tips & projects!
 
 💬 Drop your thoughts or questions in the comments.
 
-Linkedin: "https://www.linkedin.com/in/iam-siva-prasad/"
+Linkedin: **"https://www.linkedin.com/in/iam-siva-prasad/"**
