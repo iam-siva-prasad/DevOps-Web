@@ -1,3 +1,4 @@
+
 **🚀 Build & Deploy a Full-Stack Static Website for DevOps Practice**
 
 Want to master Docker & Kubernetes with a real-world example? This project is a ready-to-run static website designed for practicing containerization and orchestration.
