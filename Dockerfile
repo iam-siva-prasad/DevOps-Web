@@ -1,5 +1,3 @@
-
-
 # Use a lightweight Nginx image
 FROM nginx:alpine
 
