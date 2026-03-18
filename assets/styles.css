@@ -100,29 +100,3 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 .stack { display: inline-flex; gap: .5rem; font-size: 1rem; } /* 16px */
 
 
---------------------------------------------------------------------------------------
-
-/* ---- Dark Mode toggle button: lock text color to dark green ---- */
-:root { 
-  --toggle-green: #0f5132; /* Dark green specifically for the toggle text */
-}
-
-/* Keep the ghost style but force text color to dark green in both themes */
-#themeToggle.btn.btn--ghost {
-  color: var(--toggle-green) !important;     /* override any theme or button color */
-  background: transparent;                   /* keep ghost look */
-  border-color: var(--border);               /* respect your existing border var */
-}
-
-/* Keep color consistent on hover/focus/active */
-#themeToggle.btn.btn--ghost:hover,
-#themeToggle.btn.btn--ghost:focus-visible,
-#themeToggle.btn.btn--ghost:active {
-  color: var(--toggle-green) !important;
-  text-decoration: none;
-  background: transparent;
-  outline: 2px solid rgba(15, 81, 50, 0.25);
-  outline-offset: 2px;
-}
-
-
