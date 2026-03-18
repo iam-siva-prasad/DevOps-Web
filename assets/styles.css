@@ -1,9 +1,16 @@
---------------------------------------------------------------------------------------
-
-/* ---- Dark Mode toggle button: lock text color to dark green ---- */
-:root { 
+----------------------------------------------------------------------------------------------------------------
+:root {
+  --bg: #0f172a;          /* dark slate */
+  --bg-light: #f8fafc;    /* light gray */
+  --text: #e2e8f0;        /* slate-200 */
+  --text-dark: #0f172a;   /* slate-900 */
+  --primary: #6366f1;     /* indigo-500 */
+  --secondary: #22c55e;   /* green-500 */
+  --card: #1e293b;        /* slate-800 */
+  --border: #334155;      /* slate-700 */
   --toggle-green: #0f5132; /* Dark green specifically for the toggle text */
 }
+
 
 /* Keep the ghost style but force text color to dark green in both themes */
 #themeToggle.btn.btn--ghost {
@@ -22,19 +29,7 @@
   outline: 2px solid rgba(15, 81, 50, 0.25);
   outline-offset: 2px;
 }
-
--------------------------------------------------------------------------------------------------------------------
-:root {
-  --bg: #0f172a;          /* dark slate */
-  --bg-light: #f8fafc;    /* light gray */
-  --text: #e2e8f0;        /* slate-200 */
-  --text-dark: #0f172a;   /* slate-900 */
-  --primary: #6366f1;     /* indigo-500 */
-  --secondary: #22c55e;   /* green-500 */
-  --card: #1e293b;        /* slate-800 */
-  --border: #334155;      /* slate-700 */
-}
-
+----------------------------------------------------------------------------------------------
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; font-size: 16px; } /* Base font size */
 body.theme-dark { background: var(--bg); color: var(--text); }
