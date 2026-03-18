@@ -1,32 +1,32 @@
 
 
-<script>
-  (function () {
-    const btn = document.getElementById('themeToggle');
-    const body = document.body;
+// <script>
+//   (function () {
+//     const btn = document.getElementById('themeToggle');
+//     const body = document.body;
 
-    function isDark() {
-      return body.classList.contains('theme-dark');
-    }
+//     function isDark() {
+//       return body.classList.contains('theme-dark');
+//     }
 
-    function setTheme(dark) {
-      body.classList.toggle('theme-dark', dark);
-      body.classList.toggle('theme-light', !dark);
-      btn.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
+//     function setTheme(dark) {
+//       body.classList.toggle('theme-dark', dark);
+//       body.classList.toggle('theme-light', !dark);
+//       btn.textContent = dark ? '☀️ Light Mode' : '🌙 Dark Mode';
+//     }
 
-    // Initialize (if neither class set, default to light)
-    if (!body.classList.contains('theme-dark') && !body.classList.contains('theme-light')) {
-      setTheme(false);
-    } else {
-      // Sync button label with current theme
-      btn.textContent = isDark() ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
+//     // Initialize (if neither class set, default to light)
+//     if (!body.classList.contains('theme-dark') && !body.classList.contains('theme-light')) {
+//       setTheme(false);
+//     } else {
+//       // Sync button label with current theme
+//       btn.textContent = isDark() ? '☀️ Light Mode' : '🌙 Dark Mode';
+//     }
 
-    // Toggle on click
-    btn.addEventListener('click', () => setTheme(!isDark()));
-  })();
-</script>
+//     // Toggle on click
+//     btn.addEventListener('click', () => setTheme(!isDark()));
+//   })();
+// </script>
 
 -----------------------------------------------------------------------------------------------------------------
 
