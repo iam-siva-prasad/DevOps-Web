@@ -116,8 +116,8 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 }
 
 .bio-profile-img {
-  width: 240px;              /* ✅ 2× bigger (was 120px) */
-  height: 240px;             /* ✅ SAME as width → perfect circle */
+  width: 480px;              /* ✅ 2× bigger (was 120px) */
+  height: 480px;             /* ✅ SAME as width → perfect circle */
   object-fit: cover;         /* ✅ fills circle without distortion */
   border-radius: 50%;        /* ✅ perfectly circular */
   display: block;
