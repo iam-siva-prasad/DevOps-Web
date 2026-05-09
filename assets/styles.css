@@ -98,10 +98,9 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 .form__status { margin-top: .5rem; min-height: 1.2rem; font-size: 0.875rem; } /* 14px */
 .stack { display: inline-flex; gap: .5rem; font-size: 1rem; } /* 16px */
 
-
 /* ================================
-   HOME BIO – PROFILE IMAGE
-   Final correct version
+   HOME BIO – PROFILE IMAGE (UPDATED)
+   Production-safe & responsive
    ================================ */
 
 .home-bio {
@@ -111,21 +110,51 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 }
 
 .home-bio-content {
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* ✅ Big, perfect circular profile image */
 .bio-profile-img {
-  width: 480px;              /* ✅ 2× bigger (was 120px) */
-  height: 480px;             /* ✅ SAME as width → perfect circle */
-  object-fit: cover;         /* ✅ fills circle without distortion */
-  border-radius: 50%;        /* ✅ perfectly circular */
+  width: 320px;              /* ✅ Big but SAFE (not oversized) */
+  height: 320px;             /* ✅ Equal → perfect circle */
+  object-fit: cover;
+  border-radius: 50%;
   display: block;
-  margin: 0 auto 22px;
-  border: 3px solid #38bdf8; /* ✅ clean outline */
+  margin: 0 auto 26px;
+  border: 3px solid #38bdf8;
 }
 
-/* Safety: prevents stretching */
+/* ✅ Responsive safety */
+@media (max-width: 768px) {
+  .bio-profile-img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ================================
+   BIO TEXT – INDEPENDENT OF THEME
+   ================================ */
+
+.home-bio,
+.home-bio * {
+  color: #e2e8f0 !important; /* ✅ fixed readable color */
+}
+
+.home-bio h2 {
+  color: #ffffff !important;
+}
+
+.home-bio a {
+  color: #c7d2fe !important;
+}
+
+.home-bio a:hover {
+  text-decoration: underline;
+}
+
+/* Safety */
 .home-bio img {
   max-width: 100%;
 }
