@@ -98,6 +98,10 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 .form__status { margin-top: .5rem; min-height: 1.2rem; font-size: 0.875rem; } /* 14px */
 .stack { display: inline-flex; gap: .5rem; font-size: 1rem; } /* 16px */
 
+
+
+
+
 /* ================================
    HOME BIO – PROFILE IMAGE (UPDATED)
    Production-safe & responsive
@@ -116,13 +120,14 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 
 /* ✅ Big, perfect circular profile image */
 .bio-profile-img {
-  width: 320px;              /* ✅ Big but SAFE (not oversized) */
+  width: 320px;              /* ✅ Big but safe */
   height: 320px;             /* ✅ Equal → perfect circle */
   object-fit: cover;
   border-radius: 50%;
   display: block;
   margin: 0 auto 26px;
   border: 3px solid #38bdf8;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ✅ Responsive safety */
@@ -152,6 +157,23 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 
 .home-bio a:hover {
   text-decoration: underline;
+}
+
+/* ================================
+   PROFILE IMAGE – THEME AWARE
+   (Dark / Light mode adaptation)
+   ================================ */
+
+/* 🌙 Dark mode image feel */
+body.theme-dark .bio-profile-img {
+  background-color: #020617;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+}
+
+/* ☀️ Light mode image feel */
+body.theme-light .bio-profile-img {
+  background-color: #f8fafc;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 /* Safety */
