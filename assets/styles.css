@@ -99,3 +99,36 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 .stack { display: inline-flex; gap: .5rem; font-size: 1rem; } /* 16px */
 
 
+
+/* ================================
+   HOME BIO – PROFILE IMAGE FIX
+   Added for homepage bio section
+   ================================ */
+
+.home-bio {
+  padding: 70px 10%;
+  text-align: center;
+  background: linear-gradient(180deg, #0b132b, #0a0f24);
+}
+
+.home-bio-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bio-profile-img {
+  width: 120px;              /* ✅ FIX: prevents full-page image */
+  height: 120px;
+  object-fit: cover;         /* ✅ keeps face centered */
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 18px;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+}
+
+/* SAFETY RULE – prevents any bio image from stretching */
+.home-bio img {
+  max-width: 100%;
+  height: auto;
+}
