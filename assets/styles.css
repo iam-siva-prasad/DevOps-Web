@@ -101,7 +101,6 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 
 
 
-
 /* ================================
    HOME BIO – PROFILE IMAGE (UPDATED)
    Production-safe & responsive
@@ -161,18 +160,18 @@ body.theme-light .card { background: white; color: var(--text-dark); border-colo
 
 /* ================================
    PROFILE IMAGE – THEME AWARE
-   (Dark / Light mode adaptation)
+   (BACKGROUND BEHAVIOR UPDATED)
    ================================ */
 
-/* 🌙 Dark mode image feel */
+/* 🌙 Dark mode → match page dark background */
 body.theme-dark .bio-profile-img {
-  background-color: #020617;
+  background-color: #0b132b; /* same as home section */
   box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
 }
 
-/* ☀️ Light mode image feel */
+/* ☀️ Light mode → force black background */
 body.theme-light .bio-profile-img {
-  background-color: #f8fafc;
+  background-color: #000000; /* black background */
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
